@@ -1,0 +1,10 @@
+<soapenv:Body>
+  <bus:DeleteShipmentOrderRequest>
+     <bus:Version>
+        <majorRelease>2</majorRelease>
+        <minorRelease>0</minorRelease>
+     </bus:Version>
+     <!--1 to 30 repetitions:-->
+     <cis:shipmentNumber><%= tracking_number %></cis:shipmentNumber>
+  </bus:DeleteShipmentOrderRequest>
+</soapenv:Body>

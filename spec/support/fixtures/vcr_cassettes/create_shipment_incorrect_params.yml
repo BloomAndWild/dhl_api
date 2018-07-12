@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cig.dhl.de/services/production/soap
+    body:
+      encoding: UTF-8
+      string: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"
+        xmlns:cis=\"http://dhl.de/webservice/cisbase\" xmlns:bus=\"http://dhl.de/webservices/businesscustomershipping\">\n
+        \ <soapenv:Header>\n      <cis:Authentification>\n         <cis:user>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</cis:user>\n
+        \        <cis:signature>pass</cis:signature>\n      </cis:Authentification>\n
+        \  </soapenv:Header>\n\n  \n  <soapenv:Body>\n      <bus:CreateShipmentOrderRequest>\n
+        \        <bus:Version>\n            <majorRelease>2</majorRelease>\n            <minorRelease>0</minorRelease>\n
+        \           <build></build>\n         </bus:Version>\n         <ShipmentOrder>\n
+        \           <sequenceNumber>01</sequenceNumber>\n            <Shipment>\n
+        \              <ShipmentDetails>\n                  <product>V01PAK</product>\n
+        \                 <cis:accountNumber>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</cis:accountNumber>\n
+        \                 <customerReference>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</customerReference>\n                  <shipmentDate>2017-09-21</shipmentDate>\n
+        \                 <returnShipmentAccountNumber>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</returnShipmentAccountNumber>\n
+        \                 <returnShipmentReference>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</returnShipmentReference>\n
+        \                 <ShipmentItem>\n                     <weightInKG>1</weightInKG>\n
+        \                 </ShipmentItem>\n               </ShipmentDetails>\n               <Shipper>\n
+        \                 <Name>\n                     <cis:name1>Omniflora Blumen
+        Center GmbH</cis:name1>\n                  </Name>\n                  <Address>\n
+        \                    <cis:streetName>Odenwaldstrasse</cis:streetName>\n                     <cis:streetNumber>7-9</cis:streetNumber>\n
+        \                    <cis:addressAddition></cis:addressAddition>\n                     <cis:dispatchingInformation></cis:dispatchingInformation>\n
+        \                    <cis:zip>63263</cis:zip>\n                     <cis:city>Neu-Isenburg</cis:city>\n
+        \                    <cis:Origin>\n                        <!--Optional:-->\n
+        \                       <cis:country></cis:country>\n                        <cis:countryISOCode>DE</cis:countryISOCode>\n
+        \                       <!--Optional:-->\n                        <cis:state></cis:state>\n
+        \                    </cis:Origin>\n                  </Address>\n               </Shipper>\n
+        \              <Receiver>\n                  <cis:name1></cis:name1>\n                  <Address>\n
+        \                   \n                    \n                     <cis:streetName></cis:streetName>\n
+        \                    <cis:streetNumber></cis:streetNumber>\n                     <cis:addressAddition></cis:addressAddition>\n
+        \                    <cis:dispatchingInformation></cis:dispatchingInformation>\n
+        \                    <cis:zip>not a zip code</cis:zip>\n                     <cis:city></cis:city>\n
+        \                    <cis:Origin>\n                        <!--Optional:-->\n
+        \                       <cis:country></cis:country>\n                        <cis:countryISOCode></cis:countryISOCode>\n
+        \                       <!--Optional:-->\n                        <cis:state></cis:state>\n
+        \                    </cis:Origin>\n                  </Address>\n               </Receiver>\n
+        \           </Shipment>\n            <labelResponseType>B64</labelResponseType>\n
+        \        </ShipmentOrder>\n      </bus:CreateShipmentOrderRequest>\n</soapenv:Body>\n\n</soapenv:Envelope>\n"
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.0 (2016-12-24))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 20 Sep 2017 10:53:05 GMT
+      Soapaction:
+      - '"urn:createShipmentOrder"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '3257'
+      Authorization:
+      - Basic XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Sep 2017 10:53:05 GMT
+      Server:
+      - WebServer
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubdomains; preload
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1515'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<soap:Envelope xmlns:bcs=\"http://dhl.de/webservices/businesscustomershipping\"
+        xmlns:cis=\"http://dhl.de/webservice/cisbase\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><soapenv:Header xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"/><soap:Body>\n
+        \     <bcs:CreateShipmentOrderResponse>\n         <bcs:Version>\n            <majorRelease
+        xmlns=\"\">2</majorRelease>\n            <minorRelease xmlns=\"\">0</minorRelease>\n
+        \        </bcs:Version>\n         <Status xmlns=\"\">\n            <statusCode>1101</statusCode>\n
+        \           <statusText>Hard validation error occured.</statusText>\n            <statusMessage>Bitte
+        geben Sie ein Land an.</statusMessage>\n         </Status>\n         <CreationState
+        xmlns=\"\">\n            <sequenceNumber>01</sequenceNumber>\n            <LabelData>\n
+        \              <Status>\n                  <statusCode>1101</statusCode>\n
+        \                 <statusText>Hard validation error occured.</statusText>\n
+        \                 <statusMessage>Bitte geben Sie ein Land an.</statusMessage>\n
+        \                 <statusMessage>Bitte geben Sie bei der Empfängeradresse
+        ein Land an.</statusMessage>\n                  <statusMessage>Bitte geben
+        Sie ein Land an.</statusMessage>\n                  <statusMessage>Das angegebene
+        Produkt ist für das Land nicht verfügbar.</statusMessage>\n               </Status>\n
+        \           </LabelData>\n         </CreationState>\n      </bcs:CreateShipmentOrderResponse>\n
+        \  </soap:Body>\n   \n   \n</soap:Envelope>"
+    http_version:
+  recorded_at: Wed, 20 Sep 2017 10:53:06 GMT
+recorded_with: VCR 3.0.3

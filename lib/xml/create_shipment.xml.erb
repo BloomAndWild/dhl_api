@@ -1,0 +1,84 @@
+<soapenv:Body>
+  <bus:CreateShipmentOrderRequest>
+    <bus:Version>
+      <majorRelease>2</majorRelease>
+      <minorRelease>0</minorRelease>
+      <build></build>
+    </bus:Version>
+    <ShipmentOrder>
+      <sequenceNumber><%= sequence_number %></sequenceNumber>
+      <Shipment>
+        <ShipmentDetails>
+          <product><%= product %></product>
+          <cis:accountNumber><%= account_number %></cis:accountNumber>
+          <accountNumber><%= account_number %></accountNumber>
+          <customerReference><%= customer_reference %></customerReference>
+          <shipmentDate><%= shipment_date %></shipmentDate>
+          <returnShipmentAccountNumber><%= account_number %></returnShipmentAccountNumber>
+          <returnShipmentReference><%= customer_reference %></returnShipmentReference>
+          <ShipmentItem>
+            <weightInKG><%= weight %></weightInKG>
+          </ShipmentItem>
+        </ShipmentDetails>
+        <Shipper>
+          <Name>
+            <cis:name1><%= shipper_address[:name1] %></cis:name1>
+          </Name>
+          <Address>
+            <cis:streetName><%= shipper_address[:street_name] %></cis:streetName>
+            <cis:streetNumber><%= shipper_address[:street_number] %></cis:streetNumber>
+            <cis:addressAddition><%= shipper_address[:address_addition] %></cis:addressAddition>
+            <cis:dispatchingInformation><%= shipper_address[:dispatching_information] %></cis:dispatchingInformation>
+            <cis:zip><%= shipper_address[:zip_code] %></cis:zip>
+            <cis:city><%= shipper_address[:city] %></cis:city>
+            <cis:Origin>
+              <cis:countryISOCode><%= shipper_address[:countryISOCode] %></cis:countryISOCode>
+              <!--Optional:-->
+              <cis:state></cis:state>
+            </cis:Origin>
+          </Address>
+          <Communication>
+            <cis:email><%= shipper_address[:email] %></cis:email>
+          </Communication>
+        </Shipper>
+        <Receiver>
+          <cis:name1><%= recipient_address[:name1] %></cis:name1>
+          <% if recipient_address[:street_name] == "Packstation" %>
+            <Packstation>
+              <cis:postNumber><%= recipient_address[:address_addition] %></cis:postNumber>
+              <cis:packstationNumber><%= recipient_address[:street_number] %></cis:packstationNumber>
+              <cis:zip><%= recipient_address[:zip_code] %></cis:zip>
+              <cis:city><%= recipient_address[:city] %></cis:city>
+              <cis:Origin>
+                <cis:countryISOCode><%= recipient_address[:countryISOCode] %></cis:countryISOCode>
+              </cis:Origin>
+            </Packstation>
+          <% else %>
+            <Address>
+              <% if recipient_address[:name2] %>
+                <cis:name2><%= recipient_address[:name2] %></cis:name2>
+              <% end %>
+              <% if recipient_address[:name3] %>
+                <cis:name3><%= recipient_address[:name3] %></cis:name3>
+              <% end %>
+              <cis:streetName><%= recipient_address[:street_name] %></cis:streetName>
+              <cis:streetNumber><%= recipient_address[:street_number] %></cis:streetNumber>
+              <cis:addressAddition><%= recipient_address[:address_addition] %></cis:addressAddition>
+              <cis:dispatchingInformation><%= recipient_address[:dispatching_information] %></cis:dispatchingInformation>
+              <cis:zip><%= recipient_address[:zip_code] %></cis:zip>
+              <cis:city><%= recipient_address[:city] %></cis:city>
+              <cis:Origin>
+                <cis:countryISOCode><%= recipient_address[:countryISOCode] %></cis:countryISOCode>
+              </cis:Origin>
+            </Address>
+          <% end %>
+          <Communication>
+            <cis:email><%= recipient_address[:email] %></cis:email>
+            <cis:phone><%= recipient_address[:phone] %></cis:phone>
+          </Communication>
+        </Receiver>
+      </Shipment>
+      <labelResponseType><%= label_type %></labelResponseType>
+    </ShipmentOrder>
+  </bus:CreateShipmentOrderRequest>
+</soapenv:Body>

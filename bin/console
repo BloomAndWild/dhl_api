@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "dotenv"
+Dotenv.load
+require "dhl_api"
+
+DHLApi::Client.configure do |config|
+  config.account_number = ENV['DHL_ACCOUNT_NUMBER']
+  config.username = ENV['DHL_USERNAME']
+  config.password = ENV['DHL_PASSWORD']
+  config.basic_auth_username = ENV['DHL_BASIC_AUTH_USERNAME']
+  config.basic_auth_password = ENV['DHL_BASIC_AUTH_PASSWORD']
+  config.zt_id = ENV['DHL_BASIC_AUTH_USERNAME']
+  config.zt_password = ENV['DHL_BASIC_AUTH_USERNAME']
+  config.sandbox = ENV['DHL_SANDBOX'].nil? ? true : ENV['DHL_SANDBOX'] == "true"
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = if ENV['LOGGER_LEVEL'].nil?
+    0
+  else
+    ENV['LOGGER_LEVEL'].to_i
+  end
+end
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+
+# (If you use this, don't forget to add pry to your Gemfile!)
+# require "pry"
+# Pry.start
+
+require "irb"
+IRB.start(__FILE__)

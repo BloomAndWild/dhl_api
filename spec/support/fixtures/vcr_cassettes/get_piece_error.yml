@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cig.dhl.de/services/production/rest/sendungsverfolgung?xml=%3C?xml%20version=%221.0%22%20encoding=%22ISO-8859-1%22%20standalone=%22no%22?%3E%0A%3Cdata%20appname=%22<ZT_ID>%22%20language-code=%22en%22%20password=%22<ZT_PASSWORD>%22%20piece-code=%22INVALIDNUMBER%22%20request=%22d-get-piece%22/%3E%0A
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.0
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Fri, 04 May 2018 14:55:01 GMT
+      Authorization:
+      - Basic XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 May 2018 14:55:01 GMT
+      Server:
+      - WebServer
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubdomains; preload
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '526'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<data name=\"piece-shipment-list\"
+        request-id=\"48716412-a02f-48bf-a560-c663f7755e73\" code=\"100\" error=\"No
+        data found\"><data name=\"piece-shipment\" searched-piece-code=\"INVALIDNUMBER\"
+        piece-code=\"INVALIDNUMBER\" piece-id=\"\" recipient-name=\"\" recipient-street=\"\"
+        recipient-city=\"\" status=\"\" short-status=\"\" delivery-event-flag=\"\"
+        division=\"\" recipient-id=\"\" product-code=\"\" product-key=\"\" product-name=\"\"
+        international-flag=\"0\" piece-status=\"100\" piece-status-desc=\"No data
+        found\" /></data>\r\n"
+    http_version:
+  recorded_at: Fri, 04 May 2018 14:55:01 GMT
+recorded_with: VCR 3.0.3

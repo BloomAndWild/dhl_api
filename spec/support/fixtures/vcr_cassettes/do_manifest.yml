@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cig.dhl.de/services/production/soap
+    body:
+      encoding: UTF-8
+      string: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n
+        \ xmlns:cis=\"http://dhl.de/webservice/cisbase\"\n  xmlns:bus=\"http://dhl.de/webservices/businesscustomershipping\">\n
+        \ <soapenv:Header>\n  <cis:Authentification>\n    <cis:user>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</cis:user>\n
+        \   <cis:signature>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</cis:signature>\n  </cis:Authentification>\n</soapenv:Header>\n\n
+        \ <soapenv:Body>\n   <bus:DoManifestRequest>\n      <bus:Version>\n         <majorRelease>2</majorRelease>\n
+        \        <minorRelease>0</minorRelease>\n      </bus:Version>\n      <!--1
+        to 30 repetitions:-->\n      \n         <cis:shipmentNumber>575007012495</cis:shipmentNumber>\n
+        \     \n   </bus:DoManifestRequest>\n</soapenv:Body>\n\n</soapenv:Envelope>\n"
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.0 (2016-12-24))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 02 Nov 2017 10:54:12 GMT
+      Soapaction:
+      - '"urn:doManifest"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '707'
+      Authorization:
+      - Basic XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 02 Nov 2017 10:54:12 GMT
+      Server:
+      - WebServer
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubdomains; preload
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1073'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<soap:Envelope xmlns:bcs=\"http://dhl.de/webservices/businesscustomershipping\"
+        xmlns:cis=\"http://dhl.de/webservice/cisbase\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><soapenv:Header xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"/><soap:Body>\n
+        \     <bcs:DoManifestResponse>\n         <bcs:Version>\n            <majorRelease
+        xmlns=\"\">2</majorRelease>\n            <minorRelease xmlns=\"\">0</minorRelease>\n
+        \        </bcs:Version>\n         <Status xmlns=\"\">\n            <statusCode>0</statusCode>\n
+        \           <statusText>ok</statusText>\n            <statusMessage>Der Webservice
+        wurde ohne Fehler ausgeführt.</statusMessage>\n         </Status>\n         <ManifestState
+        xmlns=\"\">\n            <cis:shipmentNumber>575007012495</cis:shipmentNumber>\n
+        \           <Status>\n               <statusCode>0</statusCode>\n               <statusText>ok</statusText>\n
+        \              <statusMessage/>\n            </Status>\n         </ManifestState>\n
+        \     </bcs:DoManifestResponse>\n   </soap:Body>\n   \n   \n</soap:Envelope>"
+    http_version:
+  recorded_at: Thu, 02 Nov 2017 10:54:13 GMT
+recorded_with: VCR 3.0.3

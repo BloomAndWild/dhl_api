@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cig.dhl.de/services/production/soap
+    body:
+      encoding: UTF-8
+      string: |
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+          xmlns:cis="http://dhl.de/webservice/cisbase"
+          xmlns:bus="http://dhl.de/webservices/businesscustomershipping">
+          <soapenv:Header>
+          <cis:Authentification>
+            <cis:user>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</cis:user>
+            <cis:signature>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</cis:signature>
+          </cis:Authentification>
+        </soapenv:Header>
+
+          <soapenv:Body>
+          <bus:DeleteShipmentOrderRequest>
+             <bus:Version>
+                <majorRelease>2</majorRelease>
+                <minorRelease>0</minorRelease>
+             </bus:Version>
+             <!--1 to 30 repetitions:-->
+             <cis:shipmentNumber>575007012489</cis:shipmentNumber>
+          </bus:DeleteShipmentOrderRequest>
+        </soapenv:Body>
+
+        </soapenv:Envelope>
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.0 (2016-12-24))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 02 Nov 2017 10:49:22 GMT
+      Soapaction:
+      - '"urn:deleteShipmentOrder"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '700'
+      Authorization:
+      - Basic XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 02 Nov 2017 10:49:22 GMT
+      Server:
+      - WebServer
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubdomains; preload
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1091'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<soap:Envelope xmlns:bcs=\"http://dhl.de/webservices/businesscustomershipping\"
+        xmlns:cis=\"http://dhl.de/webservice/cisbase\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><soapenv:Header xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"/><soap:Body>\n
+        \     <bcs:DeleteShipmentOrderResponse>\n         <bcs:Version>\n            <majorRelease
+        xmlns=\"\">2</majorRelease>\n            <minorRelease xmlns=\"\">0</minorRelease>\n
+        \        </bcs:Version>\n         <Status xmlns=\"\">\n            <statusCode>0</statusCode>\n
+        \           <statusText>ok</statusText>\n            <statusMessage>Der Webservice
+        wurde ohne Fehler ausgeführt.</statusMessage>\n         </Status>\n         <DeletionState
+        xmlns=\"\">\n            <cis:shipmentNumber>575007012489</cis:shipmentNumber>\n
+        \           <Status>\n               <statusCode>0</statusCode>\n               <statusText>ok</statusText>\n
+        \              <statusMessage/>\n            </Status>\n         </DeletionState>\n
+        \     </bcs:DeleteShipmentOrderResponse>\n   </soap:Body>\n   \n   \n</soap:Envelope>"
+    http_version:
+  recorded_at: Thu, 02 Nov 2017 10:49:22 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cig.dhl.de/services/production/rest/sendungsverfolgung?xml=%3C?xml%20version=%221.0%22%20encoding=%22ISO-8859-1%22%20standalone=%22no%22?%3E%0A%3Cdata%20appname=%22<ZT_ID>%22%20language-code=%22en%22%20password=%22<ZT_PASSWORD>%22%20piece-code=%22575007184406%22%20request=%22d-get-piece%22/%3E%0A
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.0
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Fri, 04 May 2018 14:53:18 GMT
+      Authorization:
+      - Basic XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 May 2018 14:53:18 GMT
+      Server:
+      - WebServer
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubdomains; preload
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '2005'
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxkYXRhIG5hbWU9InBpZWNlLXNoaXBtZW50LWxpc3QiIHJlcXVlc3QtaWQ9ImQwMTM5MTZkLThkOWMtNDZhYS1hYzk5LWM0YjRkNmM1ZGNiYiIgY29kZT0iMCI+PGRhdGEgbmFtZT0icGllY2Utc2hpcG1lbnQiIGVycm9yLXN0YXR1cz0iMCIgcGllY2UtaWQ9ImJmMGU4MTk0LTlkYjQtNGIzNC05NmEwLWU3Y2Q0ZDQ0OTc2NyIgc2hpcG1lbnQtY29kZT0iIiBwaWVjZS1pZGVudGlmaWVyPSI1NzUwMDcxODQ0MCIgaWRlbnRpZmllci10eXBlPSIxIiBwaWVjZS1jb2RlPSI1NzUwMDcxODQ0MDYiIGV2ZW50LWxvY2F0aW9uPSIiIGV2ZW50LWNvdW50cnk9IkRFIiBzdGF0dXMtbGlzdGU9IjAiIHN0YXR1cy10aW1lc3RhbXA9IjAyLjA1LjIwMTggMTE6MDEiIHN0YXR1cz0iVGhlIHNoaXBtZW50IGhhcyBiZWVuIHN1Y2Nlc3NmdWxseSBkZWxpdmVyZWQiIHNob3J0LXN0YXR1cz0iRGVsaXZlcnkgc3VjY2Vzc2Z1bCIgcmVjaXBpZW50LW5hbWU9IlVuYmVoZW1lIiByZWNpcGllbnQtc3RyZWV0PSJLYXJvbGluZW5zdHIuIDI4IiByZWNpcGllbnQtY2l0eT0iOTA0MDIgTsO8cm5iZXJnIiBwYW4tcmVjaXBpZW50LW5hbWU9IlN0ZXVlcmJlcmF0ZXJrYW1tZXIgTsO8cm5iZXJnIEZyYXUgQnVjaG5lciIgcGFuLXJlY2lwaWVudC1zdHJlZXQ9Ikthcm9saW5lbnN0cmHDn2UgMjgiIHBhbi1yZWNpcGllbnQtY2l0eT0iOTA0MDIgTsO8cm5iZXJnIiBwYW4tcmVjaXBpZW50LWFkZHJlc3M9Ikthcm9saW5lbnN0cmHDn2UgMjggOTA0MDIgTsO8cm5iZXJnIiBwYW4tcmVjaXBpZW50LXBvc3RhbGNvZGU9IjkwNDAyIiBwYW4tcmVjaXBpZW50LXBvc3RhbG51bWJlcj0iIiBwYW4tcmVjaXBpZW50LWVtYWlsPSIiIHNoaXBwZXItbmFtZT0iQmxvb20gYW5kIFdpbGQiIHNoaXBwZXItc3RyZWV0PSJIZXJiw6Rja2VyIDk5OSIgc2hpcHBlci1jaXR5PSI2MzE3OSBPYmVydHNoYXVzZW4iIHNoaXBwZXItYWRkcmVzcz0iSGVyYsOkY2tlciA5OTkgNjMxNzkgT2JlcnRzaGF1c2VuIiBwcm9kdWN0LWNvZGU9IjAwIiBwcm9kdWN0LWtleT0iMjAwMDAwIiBwcm9kdWN0LW5hbWU9IkRITCBQQUtFVCAocGFyY2VsKSIgZGVsaXZlcnktZXZlbnQtZmxhZz0iMSIgcmVjaXBpZW50LWlkPSI1IiByZWNpcGllbnQtaWQtdGV4dD0iZGlmZmVyZW50IHBlcnNvbiBwcmVzZW50IiB1cHU9IiIgc2hpcG1lbnQtbGVuZ3RoPSIwLjAiIHNoaXBtZW50LXdpZHRoPSIwLjAiIHNoaXBtZW50LWhlaWdodD0iMC4wIiBzaGlwbWVudC13ZWlnaHQ9IjEuMCIgaW50ZXJuYXRpb25hbC1mbGFnPSIwIiBkaXZpc2lvbj0iRFBFRUQiIGljZT0iRExWUkQiIHJpYz0iQUNDUFQiIHN0YW5kYXJkLWV2ZW50LWNvZGU9IlpVIiBkZXN0LWNvdW50cnk9IkRFIiBvcmlnaW4tY291bnRyeT0iREUiIHNlYXJjaGVkLXBpZWNlLWNvZGU9IjU3NTAwNzE4NDQwNiIgc2VhcmNoZWQtcmVmLW5vPSIiIHBpZWNlLWN1c3RvbWVyLXJlZmVyZW5jZT0iODY2MDg0IiBzaGlwbWVudC1jdXN0b21lci1yZWZlcmVuY2U9IjxBQ0NPVU5UX05VTUJFUj4iIGxlaXRjb2RlPSI0MDMyNzY5MDQwMis5OTAwMDkwMDA1MDAyOCIgcm91dGluZy1jb2RlLWVhbj0iNDAzMjc2OTA0MDIrOTkwMDA5MDAwNTAwMjgiIG1hdGNoY29kZT0iIiBkb21lc3RpYy1pZD0iIiBhaXJ3YXktYmlsbC1udW1iZXI9IiIgcnVlY2tzZW5kdW5nPSJmYWxzZSIgcHNsei1ucj0iODM3MjQxMDI4MSIgb3JkZXItcHJlZmVycmVkLWRlbGl2ZXJ5LWRheT0iZmFsc2UiIGNvZC1hbW91bnQ9IiIgY29kLWN1cnJlbmN5PSIiIG5vdGlmaWNhdGlvbi1jYXJkLXByaW50ZWQ9ImZhbHNlIiBoYXMtZGlnaXRhbC1ub3RpZmljYXRpb24tY2FzZXM9ImZhbHNlIiBwcmVmZXJyZWQtZGVsaXZlcnktZGF5PSIiIHByZWZlcnJlZC1kZWxpdmVyeS10aW1lZnJhbWUtZnJvbT0iIiBwcmVmZXJyZWQtZGVsaXZlcnktdGltZWZyYW1lLXRvPSIiIHByZWZlcnJlZC10aW1lZnJhbWUtcmVmdXNlZC10ZXh0PSIiIC8+PC9kYXRhPg0K
+    http_version:
+  recorded_at: Fri, 04 May 2018 14:53:19 GMT
+recorded_with: VCR 3.0.3

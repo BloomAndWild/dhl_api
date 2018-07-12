@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cig.dhl.de/services/production/soap
+    body:
+      encoding: UTF-8
+      string: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n
+        \ xmlns:cis=\"http://dhl.de/webservice/cisbase\"\n  xmlns:bus=\"http://dhl.de/webservices/businesscustomershipping\">\n
+        \ <soapenv:Header>\n  <cis:Authentification>\n    <cis:user></cis:user>\n
+        \   <cis:signature></cis:signature>\n  </cis:Authentification>\n</soapenv:Header>\n\n
+        \ <soapenv:Body>\n  <bus:CreateShipmentOrderRequest>\n    <bus:Version>\n
+        \     <majorRelease>2</majorRelease>\n      <minorRelease>0</minorRelease>\n
+        \     <build></build>\n    </bus:Version>\n    <ShipmentOrder>\n      <sequenceNumber>01</sequenceNumber>\n
+        \     <Shipment>\n        <ShipmentDetails>\n          <product>V01PAK</product>\n
+        \         <cis:accountNumber></cis:accountNumber>\n          <accountNumber></accountNumber>\n
+        \         <customerReference></customerReference>\n          <shipmentDate>2018-05-21</shipmentDate>\n
+        \         <returnShipmentAccountNumber></returnShipmentAccountNumber>\n
+        \         <returnShipmentReference></returnShipmentReference>\n
+        \         <ShipmentItem>\n            <weightInKG>1</weightInKG>\n          </ShipmentItem>\n
+        \       </ShipmentDetails>\n        <Shipper>\n          <Name>\n            <cis:name1>Omniflora
+        Blumen Center GmbH</cis:name1>\n          </Name>\n          <Address>\n            <cis:streetName>Odenwaldstrasse</cis:streetName>\n
+        \           <cis:streetNumber>10000</cis:streetNumber>\n            <cis:addressAddition></cis:addressAddition>\n
+        \           <cis:dispatchingInformation></cis:dispatchingInformation>\n            <cis:zip>00000</cis:zip>\n
+        \           <cis:city>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</cis:city>\n            <cis:Origin>\n
+        \             <cis:countryISOCode>DE</cis:countryISOCode>\n              <!--Optional:-->\n
+        \             <cis:state></cis:state>\n            </cis:Origin>\n          </Address>\n
+        \         <Communication>\n            <cis:email>xxxxx@xxxxxx.com</cis:email>\n
+        \         </Communication>\n        </Shipper>\n        <Receiver>\n          <cis:name1>Test
+        User</cis:name1>\n          \n            <Packstation>\n              <cis:postNumber>000000</cis:postNumber>\n
+        \             <cis:packstationNumber>172</cis:packstationNumber>\n              <cis:zip>00000</cis:zip>\n
+        \             <cis:city>XXXXXXX</cis:city>\n              <cis:Origin>\n                <cis:countryISOCode>DE</cis:countryISOCode>\n
+        \             </cis:Origin>\n            </Packstation>\n          \n          <Communication>\n
+        \           <cis:email>xxxxx@xxxxxx.com</cis:email>\n            <cis:phone>2284333112</cis:phone>\n
+        \         </Communication>\n        </Receiver>\n      </Shipment>\n      <labelResponseType>B64</labelResponseType>\n
+        \   </ShipmentOrder>\n  </bus:CreateShipmentOrderRequest>\n</soapenv:Body>\n\n</soapenv:Envelope>\n"
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.5.1 (2018-03-29))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 04 May 2018 14:13:58 GMT
+      Soapaction:
+      - '"urn:createShipmentOrder"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '2770'
+      Authorization:
+      - Basic XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 May 2018 14:13:58 GMT
+      Server:
+      - WebServer
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubdomains; preload
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '8933'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<soap:Envelope xmlns:bcs=\"http://dhl.de/webservices/businesscustomershipping\"
+        xmlns:cis=\"http://dhl.de/webservice/cisbase\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><soapenv:Header xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"/><soap:Body>\n
+        \     <bcs:CreateShipmentOrderResponse>\n         <bcs:Version>\n            <majorRelease
+        xmlns=\"\">2</majorRelease>\n            <minorRelease xmlns=\"\">0</minorRelease>\n
+        \        </bcs:Version>\n         <Status xmlns=\"\">\n            <statusCode>0</statusCode>\n
+        \           <statusText>ok</statusText>\n            <statusMessage>Der Webservice
+        wurde ohne Fehler ausgeführt.</statusMessage>\n         </Status>\n         <CreationState
+        xmlns=\"\">\n            <sequenceNumber>01</sequenceNumber>\n            <LabelData>\n
+        \              <Status>\n                  <statusCode>0</statusCode>\n                  <statusText>ok</statusText>\n
+        \                 <statusMessage>Der Webservice wurde ohne Fehler ausgeführt.</statusMessage>\n
+        \              </Status>\n               <cis:shipmentNumber>575007190368</cis:shipmentNumber>\n
+        \              <labelData>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FB1BiAIFUhRgyU2UrzkKRjRIEYUmKcCSnShfsxQdkTAFAklTBCI/AdvyFB1BoAIFEhVgyVCUr5mKjiBUgQKpCrDkKMrXXAUjGqyIQpMVYMlSlK/Zio4gXIEC6Qqw5CnK13wFIxqwiEITFmDJVJSvGYuOIGSBAikLsNS48jVn0ZHo5W5F0WwFTMtadARhCxRIW4AlX1H+J+Qtafn3Ahe5hiUu/R4scgGWkEX5GrroiKQuEEjsAihBi7I1eNERJC9QIHoBlrBF+Rq+YETTF1Fo/AIsRzflawCjI5LAQCARDKCELsrWEEZHwrBGWAwDLEc45WsQgxEkMSJAFAMoxzhlaxijI2FYIyyOEYwABnwLZHREEhkIJJIBlMOcsjWU0ZE8dFyLZYDnYYVwwYyMWDLTFRbNANdhhXDhjI7Eoe9aPAMsgYzyNaDBiCY0otCIBlgOd8rXkEZHBvmglWBGmRrU6Ege9vEW1QDPwwrhwhqMaFojCo1rgCWgUb4GNjqCxAYKRDbAcsxTvoY2GNHURhQa2wDnoee64EZH4nASsOgGWMIa5Wt4gxFNb0Sh8Q1wL3GlI8DRgTKsShbhAEtoo3wNcXQEKQ4UiHEES3IDugY5OoAkB3xEOcAS3ihfwxwdmSXNgWKWOEcwAhzwLdDRkTKcBCzSAY5Dx3Whjo4g1YECsY5gBDngW7CjI1WSHSik6hVLmKN8DXd0BOkOFIh3gMNwFnABD0Y04RGFRjzAEuooX0MeHUHKAwViHuB5OBG4oAcjmvSIQqMeYAl3lK9hj46k4UxgcQ8wfpwLvgY+OoLEBwpEPh0j5RG6hT4YkNRH2BL7CJKkB9RPCH5k7/PZyc9/tT//D5Fd3n0KZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8L0tpZHNbNiAwIFJdL1R5cGUvUGFnZXMvQ291bnQgMS9JVFhUKDIuMS43KT4+CmVuZG9iago3IDAgb2JqCjw8L1R5cGUvQ2F0YWxvZy9QYWdlcyA1IDAgUj4+CmVuZG9iago4IDAgb2JqCjw8L01vZERhdGUoRDoyMDE4MDUwNDE2MTM1OCswMicwMCcpL0NyZWF0aW9uRGF0ZShEOjIwMTgwNTA0MTYxMzU4KzAyJzAwJykvUHJvZHVjZXIoaVRleHQgMi4xLjcgYnkgMVQzWFQpPj4KZW5kb2JqCnhyZWYKMCA5CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDQ4MCAwMDAwMCBuIAowMDAwMDAwMjk5IDAwMDAwIG4gCjAwMDAwMDAzOTIgMDAwMDAgbiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDA1MTY1IDAwMDAwIG4gCjAwMDAwMDAxMzIgMDAwMDAgbiAKMDAwMDAwNTIyOCAwMDAwMCBuIAowMDAwMDA1MjczIDAwMDAwIG4gCnRyYWlsZXIKPDwvSW5mbyA4IDAgUi9JRCBbPGVlMTBjZTIzOTE2MTFjYjQxZjdjZTJkMjc1NjVlZWRmPjwwMmU4Yzc3ZDFhMTIxZmMzY2NhNjA5YTc3NzA0YzIzOT5dL1Jvb3QgNyAwIFIvU2l6ZSA5Pj4Kc3RhcnR4cmVmCjUzOTUKJSVFT0YK</labelData>\n
+        \           </LabelData>\n         </CreationState>\n      </bcs:CreateShipmentOrderResponse>\n
+        \  </soap:Body>\n   \n   \n</soap:Envelope>"
+    http_version:
+  recorded_at: Fri, 04 May 2018 14:13:58 GMT
+recorded_with: VCR 3.0.3

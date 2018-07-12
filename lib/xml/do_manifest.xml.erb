@@ -1,0 +1,12 @@
+<soapenv:Body>
+   <bus:DoManifestRequest>
+      <bus:Version>
+         <majorRelease>2</majorRelease>
+         <minorRelease>0</minorRelease>
+      </bus:Version>
+      <!--1 to 30 repetitions:-->
+      <% tracking_numbers.each do |tracking_number| %>
+         <cis:shipmentNumber><%= tracking_number %></cis:shipmentNumber>
+      <% end %>
+   </bus:DoManifestRequest>
+</soapenv:Body>
