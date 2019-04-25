@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cig.dhl.de/services/production/soap
+    body:
+      encoding: UTF-8
+      string: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n
+        \ xmlns:cis=\"http://dhl.de/webservice/cisbase\"\n  xmlns:bus=\"http://dhl.de/webservices/businesscustomershipping\">\n
+        \ <soapenv:Header>\n  <cis:Authentification>\n    <cis:user><USERNAME></cis:user>\n
+        \   <cis:signature><PASSWORD></cis:signature>\n  </cis:Authentification>\n</soapenv:Header>\n\n
+        \ <soapenv:Body>\n  <bus:CreateShipmentOrderRequest>\n    <bus:Version>\n
+        \     <majorRelease>2</majorRelease>\n      <minorRelease>0</minorRelease>\n
+        \     <build></build>\n    </bus:Version>\n    <ShipmentOrder>\n      <sequenceNumber>01</sequenceNumber>\n
+        \     <Shipment>\n        <ShipmentDetails>\n          <product>V01PAK</product>\n
+        \         <cis:accountNumber><ACCOUNT_NUMBER></cis:accountNumber>\n          <accountNumber><ACCOUNT_NUMBER></accountNumber>\n
+        \         <customerReference>800000000000</customerReference>\n          <shipmentDate>2019-04-25</shipmentDate>\n
+        \         <returnShipmentAccountNumber><ACCOUNT_NUMBER></returnShipmentAccountNumber>\n
+        \         <returnShipmentReference>800000000000</returnShipmentReference>\n
+        \         <ShipmentItem>\n            <weightInKG>1</weightInKG>\n          </ShipmentItem>\n
+        \         \n        </ShipmentDetails>\n        <Shipper>\n          <Name>\n
+        \           <cis:name1>Test Shipment</cis:name1>\n          </Name>\n          <Address>\n
+        \           <cis:streetName>Herbäcker</cis:streetName>\n            <cis:streetNumber>999</cis:streetNumber>\n
+        \           <cis:addressAddition></cis:addressAddition>\n            <cis:dispatchingInformation></cis:dispatchingInformation>\n
+        \           <cis:zip>63179</cis:zip>\n            <cis:city>Obertshausen</cis:city>\n
+        \           <cis:Origin>\n              <cis:countryISOCode>DE</cis:countryISOCode>\n
+        \             <!--Optional:-->\n              <cis:state></cis:state>\n            </cis:Origin>\n
+        \         </Address>\n          <Communication>\n            <cis:email></cis:email>\n
+        \         </Communication>\n        </Shipper>\n        <Receiver>\n          <cis:name1>Test
+        User</cis:name1>\n          \n            <Address>\n              \n                <cis:name2></cis:name2>\n
+        \             \n              \n                <cis:name3></cis:name3>\n
+        \             \n              <cis:streetName>Lutzowplatz</cis:streetName>\n
+        \             <cis:streetNumber>7</cis:streetNumber>\n              <cis:addressAddition></cis:addressAddition>\n
+        \             <cis:dispatchingInformation></cis:dispatchingInformation>\n
+        \             <cis:zip>10785</cis:zip>\n              <cis:city>Berlin</cis:city>\n
+        \             <cis:Origin>\n                <cis:countryISOCode>DE</cis:countryISOCode>\n
+        \             </cis:Origin>\n            </Address>\n          \n          <Communication>\n
+        \           <cis:email></cis:email>\n            <cis:phone></cis:phone>\n
+        \         </Communication>\n        </Receiver>\n      </Shipment>\n      <labelResponseType>B64</labelResponseType>\n
+        \   </ShipmentOrder>\n  </bus:CreateShipmentOrderRequest>\n</soapenv:Body>\n\n</soapenv:Envelope>\n"
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.5.1 (2018-03-29))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 24 Apr 2019 15:35:24 GMT
+      Soapaction:
+      - '"urn:createShipmentOrder"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '2970'
+      Authorization:
+      - Basic Ymxvb21hbmR3aWxkXzE6TEgxZjF4dGhkNjJHdkZkSW1PN0RTOEFMZUx0TWY2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 Apr 2019 15:35:24 GMT
+      Server:
+      - WebServer
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubdomains; preload
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - text/xml;charset=utf-8
+      Content-Length:
+      - '8897'
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: |-
+        <soap:Envelope xmlns:bcs="http://dhl.de/webservices/businesscustomershipping" xmlns:cis="http://dhl.de/webservice/cisbase" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+           <soap:Header/>
+           <soap:Body>
+              <bcs:CreateShipmentOrderResponse>
+                 <bcs:Version>
+                    <majorRelease>2</majorRelease>
+                    <minorRelease>0</minorRelease>
+                 </bcs:Version>
+                 <Status>
+                    <statusCode>0</statusCode>
+                    <statusText>Weak validation error occured.</statusText>
+                    <statusMessage>Die angegebene  Straße kann nicht gefunden werden.</statusMessage>
+                 </Status>
+                 <CreationState>
+                    <sequenceNumber>01</sequenceNumber>
+                    <LabelData>
+                       <Status>
+                          <statusCode>0</statusCode>
+                          <statusText>Weak validation error occured.</statusText>
+                          <statusMessage>Die angegebene  Straße kann nicht gefunden werden.</statusMessage>
+                          <statusMessage>Die angegebene  Straße kann nicht gefunden werden.</statusMessage>
+                       </Status>
+                       <cis:shipmentNumber>575007398374</cis:shipmentNumber>
+                       <labelData>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3pMVjHi0YoRnK9CWpni9pys+gngFBPIVaOtxr/eEBSMesRjhGQu0pSpe7ymLjyTGaUbxZAWVkbT4CKIWEMhaoC1d8frPSFvy+v+LW+w1Im9p1xCBC7RFLF7vkYuPWOYCwEIXSItZvNpjFx9B7gICwQu0RS1e79ELRjx7McLDF+i1myUofvERy18AWAADmbs5giIYH0EGAwIhDLTFLl7vMQxGkMMYgCAG0o5wXu1RjI9M3RwRYYxpxC+ojzjGRyyPAWCBDKRFMF7tkYyPlG7FjVAG2o5zXu+xjI1ELtOICGag7Ujn9QuiGR9J3bob4Qy0xTFe7/EMRjyfMcIDGmiLZLzeIxof6fCOtVjGKz2m8ZHS7eMjqIEeuxmCohqMeFZjhIc10BbPeL3HNT6CvAYEAhtoO+Z5vUc2GPHMxggPbaCtw73eYxsfSd1JIIIb04hqUB/RjY8guwGB8Aba4hqv9/jGR3J3EogAB3rqTgIU4WDEMxwjPMSBXvgkEDGOD8zdmhtBDvTUnQQoysGIZzlGeJgDvfJJIOIcH0Ceg3oEOtAW4Xi9Rzo+gkwHBEId04hxUB+xjo8sluuAsK53bVGO13u04yPIdkAg3IGeurMAxTs+gnwHBAIe04h0UB8Rj48g4wGBkAe65TpejpjHB1KXMUTQYxrRDuoj6vERZD0gEPZAW7zj9R73+AjyHhAIfJpGxmPlEflgwDIfq7bQx5TlPCj9jNjHdj6/Ovf5t/rnfwFTvraZCmVuZHN0cmVhbQplbmRvYmoKNSAwIG9iago8PC9LaWRzWzYgMCBSXS9UeXBlL1BhZ2VzL0NvdW50IDEvSVRYVCgyLjEuNyk+PgplbmRvYmoKNyAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgNSAwIFI+PgplbmRvYmoKOCAwIG9iago8PC9Nb2REYXRlKEQ6MjAxOTA0MjQxNzM1MjQrMDInMDAnKS9DcmVhdGlvbkRhdGUoRDoyMDE5MDQyNDE3MzUyNCswMicwMCcpL1Byb2R1Y2VyKGlUZXh0IDIuMS43IGJ5IDFUM1hUKT4+CmVuZG9iagp4cmVmCjAgOQowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDA0ODAgMDAwMDAgbiAKMDAwMDAwMDI5OSAwMDAwMCBuIAowMDAwMDAwMzkyIDAwMDAwIG4gCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwNTA4MiAwMDAwMCBuIAowMDAwMDAwMTMyIDAwMDAwIG4gCjAwMDAwMDUxNDUgMDAwMDAgbiAKMDAwMDAwNTE5MCAwMDAwMCBuIAp0cmFpbGVyCjw8L0luZm8gOCAwIFIvSUQgWzwyMzg4ZGQxNTBhNzlkMGFmZjc5ZDcyMTQ4NTZkYTRhOD48MDY3NjExNzY1NjU2M2UxNTBiMDFlODkwMWY5YWVkNGM+XS9Sb290IDcgMCBSL1NpemUgOT4+CnN0YXJ0eHJlZgo1MzEyCiUlRU9GCg==</labelData>
+                    </LabelData>
+                 </CreationState>
+              </bcs:CreateShipmentOrderResponse>
+           </soap:Body>
+        </soap:Envelope>
+    http_version: 
+  recorded_at: Wed, 24 Apr 2019 15:35:24 GMT
+recorded_with: VCR 3.0.3

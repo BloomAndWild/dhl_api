@@ -103,12 +103,13 @@ describe DHLApi::RequestHandler do
 
   context "create_shipment" do
     describe "#request" do
+      let(:shipment_date) { "2018-05-21" }
       let(:attrs) do
         {
           sequence_number: "01",
           product: "V01PAK",
           customer_reference: "800000000000",
-          shipment_date: "2018-05-21",
+          shipment_date: shipment_date,
           weight: 1,
           shipper_address: {
             name1: "Test Shipment",
@@ -148,6 +149,54 @@ describe DHLApi::RequestHandler do
             expect(response.base64_pdf_label).to be_a String
             expect(response.shipment_number).to eq "222201010017209788"
             expect(response.tracking_url).to eq "https://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=en&idc=222201010017209788&rfn=&extendedSearch=true"
+          end
+        end
+      end
+
+      context "with enabled preferred time service" do
+        let(:shipment_date) { "2019-04-25" }
+
+        let(:preferred_time_attributes) do
+          {
+            preferred_time_frame: "18002000",
+          }
+        end
+
+        let(:response) do
+          subject.request(:create_shipment, attrs.merge(preferred_time_attributes))
+        end
+
+        it "books a shipment with DHL" do
+          VCR.use_cassette('create_preferred_time_shipment_enabled') do
+            expect(response.body).to be_a Hash
+            expect(response.status_code).to eq "0"
+            expect(response.base64_pdf_label).to be_a String
+            expect(response.shipment_number).to eq "575007398368"
+            expect(response.tracking_url).to eq "https://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=en&idc=575007398368&rfn=&extendedSearch=true"
+          end
+        end
+      end
+
+      context "with disabled preferred time service" do
+        let(:shipment_date) { "2019-04-25" }
+
+        let(:preferred_time_attributes) do
+          {
+            preferred_time_frame: nil,
+          }
+        end
+
+        let(:response) do
+          subject.request(:create_shipment, attrs.merge(preferred_time_attributes))
+        end
+
+        it "books a shipment with DHL" do
+          VCR.use_cassette('create_preferred_time_shipment_disabled') do
+            expect(response.body).to be_a Hash
+            expect(response.status_code).to eq "0"
+            expect(response.base64_pdf_label).to be_a String
+            expect(response.shipment_number).to eq "575007398374"
+            expect(response.tracking_url).to eq "https://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=en&idc=575007398374&rfn=&extendedSearch=true"
           end
         end
       end

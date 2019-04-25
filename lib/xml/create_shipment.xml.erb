@@ -19,6 +19,11 @@
           <ShipmentItem>
             <weightInKG><%= weight %></weightInKG>
           </ShipmentItem>
+          <% if preferred_time_frame %>
+            <Service>
+              <PreferredTime active="1" type="<%= preferred_time_frame %>"/>
+            </Service>
+          <% end %>
         </ShipmentDetails>
         <Shipper>
           <Name>
