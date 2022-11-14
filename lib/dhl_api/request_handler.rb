@@ -42,7 +42,7 @@ module DHLApi
         Faraday.new(url: config.rest_endpoint) do |conn|
           conn.response :raise_error
           conn.adapter :httpclient
-          conn.basic_auth(config.basic_auth_username, config.basic_auth_password)
+          conn.request :basic_auth, config.basic_auth_username, config.basic_auth_password
           conn.options.timeout = 60
           conn.options.open_timeout = 60
           # conn.response :logger, ::Logger.new(STDOUT), bodies: true
